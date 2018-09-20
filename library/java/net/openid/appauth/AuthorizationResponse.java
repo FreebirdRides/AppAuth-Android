@@ -562,7 +562,10 @@ public class AuthorizationResponse {
      */
     @Nullable
     public static AuthorizationResponse fromIntent(@NonNull Intent dataIntent) {
-        checkNotNull(dataIntent, "dataIntent must not be null");
+        if (dataIntent == null) {
+            return null;
+        }
+        // checkNotNull(dataIntent, "dataIntent must not be null");
         if (!dataIntent.hasExtra(EXTRA_RESPONSE)) {
             return null;
         }
